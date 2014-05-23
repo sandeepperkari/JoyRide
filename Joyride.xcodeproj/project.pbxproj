@@ -14,13 +14,21 @@
 		5B66CB051925BAE1004809A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B66CB041925BAE1004809A4 /* main.m */; };
 		5B66CB091925BAE1004809A4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B66CB081925BAE1004809A4 /* AppDelegate.m */; };
 		5B66CB0C1925BAE1004809A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B66CB0A1925BAE1004809A4 /* Main.storyboard */; };
-		5B66CB0F1925BAE1004809A4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B66CB0E1925BAE1004809A4 /* ViewController.m */; };
 		5B66CB111925BAE1004809A4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B66CB101925BAE1004809A4 /* Images.xcassets */; };
 		5B66CB181925BAE1004809A4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B66CB171925BAE1004809A4 /* XCTest.framework */; };
 		5B66CB191925BAE1004809A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B66CAF81925BAE1004809A4 /* Foundation.framework */; };
 		5B66CB1A1925BAE1004809A4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B66CAFC1925BAE1004809A4 /* UIKit.framework */; };
 		5B66CB221925BAE1004809A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B66CB201925BAE1004809A4 /* InfoPlist.strings */; };
 		5B66CB241925BAE1004809A4 /* JoyrideTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B66CB231925BAE1004809A4 /* JoyrideTests.m */; };
+		5B66CB3519271044004809A4 /* joyRideSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B66CB3419271044004809A4 /* joyRideSearchController.m */; };
+		5B66CB3A1927CEBC004809A4 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B66CB391927CEBC004809A4 /* User.m */; };
+		5B66CB3D1927CED7004809A4 /* Ride.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B66CB3C1927CED7004809A4 /* Ride.m */; };
+		5B66CB401927CEF8004809A4 /* RideEnrollment.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B66CB3F1927CEF8004809A4 /* RideEnrollment.m */; };
+		5B66CB431927CF14004809A4 /* Vehcile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B66CB421927CF14004809A4 /* Vehcile.m */; };
+		5B66CB461927E65F004809A4 /* joyRideSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B66CB451927E65F004809A4 /* joyRideSearch.m */; };
+		5B66CB4919280113004809A4 /* TestDataCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B66CB4819280113004809A4 /* TestDataCollection.m */; };
+		5B66CB4C19284CAE004809A4 /* detailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B66CB4B19284CAE004809A4 /* detailsViewController.m */; };
+		5B66CB4F192DB6B4004809A4 /* addRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B66CB4E192DB6B4004809A4 /* addRideViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,14 +53,30 @@
 		5B66CB071925BAE1004809A4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5B66CB081925BAE1004809A4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		5B66CB0B1925BAE1004809A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		5B66CB0D1925BAE1004809A4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		5B66CB0E1925BAE1004809A4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		5B66CB101925BAE1004809A4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5B66CB161925BAE1004809A4 /* JoyrideTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JoyrideTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B66CB171925BAE1004809A4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		5B66CB1F1925BAE1004809A4 /* JoyrideTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JoyrideTests-Info.plist"; sourceTree = "<group>"; };
 		5B66CB211925BAE1004809A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5B66CB231925BAE1004809A4 /* JoyrideTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JoyrideTests.m; sourceTree = "<group>"; };
+		5B66CB3319271044004809A4 /* joyRideSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = joyRideSearchController.h; sourceTree = "<group>"; };
+		5B66CB3419271044004809A4 /* joyRideSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = joyRideSearchController.m; sourceTree = "<group>"; };
+		5B66CB381927CEBC004809A4 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		5B66CB391927CEBC004809A4 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		5B66CB3B1927CED7004809A4 /* Ride.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ride.h; sourceTree = "<group>"; };
+		5B66CB3C1927CED7004809A4 /* Ride.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ride.m; sourceTree = "<group>"; };
+		5B66CB3E1927CEF8004809A4 /* RideEnrollment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RideEnrollment.h; sourceTree = "<group>"; };
+		5B66CB3F1927CEF8004809A4 /* RideEnrollment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RideEnrollment.m; sourceTree = "<group>"; };
+		5B66CB411927CF14004809A4 /* Vehcile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vehcile.h; sourceTree = "<group>"; };
+		5B66CB421927CF14004809A4 /* Vehcile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vehcile.m; sourceTree = "<group>"; };
+		5B66CB441927E65F004809A4 /* joyRideSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = joyRideSearch.h; sourceTree = "<group>"; };
+		5B66CB451927E65F004809A4 /* joyRideSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = joyRideSearch.m; sourceTree = "<group>"; };
+		5B66CB4719280113004809A4 /* TestDataCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestDataCollection.h; sourceTree = "<group>"; };
+		5B66CB4819280113004809A4 /* TestDataCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDataCollection.m; sourceTree = "<group>"; };
+		5B66CB4A19284CAE004809A4 /* detailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = detailsViewController.h; sourceTree = "<group>"; };
+		5B66CB4B19284CAE004809A4 /* detailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = detailsViewController.m; sourceTree = "<group>"; };
+		5B66CB4D192DB6B4004809A4 /* addRideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addRideViewController.h; sourceTree = "<group>"; };
+		5B66CB4E192DB6B4004809A4 /* addRideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addRideViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,10 +139,17 @@
 				5B66CB071925BAE1004809A4 /* AppDelegate.h */,
 				5B66CB081925BAE1004809A4 /* AppDelegate.m */,
 				5B66CB0A1925BAE1004809A4 /* Main.storyboard */,
-				5B66CB0D1925BAE1004809A4 /* ViewController.h */,
-				5B66CB0E1925BAE1004809A4 /* ViewController.m */,
 				5B66CB101925BAE1004809A4 /* Images.xcassets */,
 				5B66CAFF1925BAE1004809A4 /* Supporting Files */,
+				5B66CB371927BF87004809A4 /* Model */,
+				5B66CB3319271044004809A4 /* joyRideSearchController.h */,
+				5B66CB3419271044004809A4 /* joyRideSearchController.m */,
+				5B66CB441927E65F004809A4 /* joyRideSearch.h */,
+				5B66CB451927E65F004809A4 /* joyRideSearch.m */,
+				5B66CB4A19284CAE004809A4 /* detailsViewController.h */,
+				5B66CB4B19284CAE004809A4 /* detailsViewController.m */,
+				5B66CB4D192DB6B4004809A4 /* addRideViewController.h */,
+				5B66CB4E192DB6B4004809A4 /* addRideViewController.m */,
 			);
 			path = Joyride;
 			sourceTree = "<group>";
@@ -150,6 +181,23 @@
 				5B66CB201925BAE1004809A4 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5B66CB371927BF87004809A4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5B66CB381927CEBC004809A4 /* User.h */,
+				5B66CB391927CEBC004809A4 /* User.m */,
+				5B66CB3B1927CED7004809A4 /* Ride.h */,
+				5B66CB3C1927CED7004809A4 /* Ride.m */,
+				5B66CB3E1927CEF8004809A4 /* RideEnrollment.h */,
+				5B66CB3F1927CEF8004809A4 /* RideEnrollment.m */,
+				5B66CB411927CF14004809A4 /* Vehcile.h */,
+				5B66CB421927CF14004809A4 /* Vehcile.m */,
+				5B66CB4719280113004809A4 /* TestDataCollection.h */,
+				5B66CB4819280113004809A4 /* TestDataCollection.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,8 +296,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B66CB0F1925BAE1004809A4 /* ViewController.m in Sources */,
+				5B66CB3A1927CEBC004809A4 /* User.m in Sources */,
+				5B66CB3519271044004809A4 /* joyRideSearchController.m in Sources */,
+				5B66CB4F192DB6B4004809A4 /* addRideViewController.m in Sources */,
+				5B66CB401927CEF8004809A4 /* RideEnrollment.m in Sources */,
+				5B66CB4C19284CAE004809A4 /* detailsViewController.m in Sources */,
+				5B66CB431927CF14004809A4 /* Vehcile.m in Sources */,
+				5B66CB4919280113004809A4 /* TestDataCollection.m in Sources */,
+				5B66CB3D1927CED7004809A4 /* Ride.m in Sources */,
 				5B66CB091925BAE1004809A4 /* AppDelegate.m in Sources */,
+				5B66CB461927E65F004809A4 /* joyRideSearch.m in Sources */,
 				5B66CB051925BAE1004809A4 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

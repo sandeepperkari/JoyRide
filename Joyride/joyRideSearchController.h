@@ -16,10 +16,10 @@
 @property(nonatomic,strong) NSArray *ridesArray;
 -(IBAction)enterEditMode:(id)sender;
 
-
+/*
 @property (nonatomic,strong)IBOutlet UIBarButtonItem *groupBarButton;
 @property(nonatomic,strong) UIBarButtonItem *groupBarButtonSelectItems;
 @property(nonatomic,strong) UIBarButtonItem *cancelBarButton;
-
+*/
 
 @end

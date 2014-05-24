@@ -58,7 +58,7 @@
                     <navigationItem key="navigationItem" title="search" id="Cdn-fh-tJW">
                         <barButtonItem key="leftBarButtonItem" title="Group" style="done" id="V5D-l1-JV0">
                             <connections>
-                                <action selector="enterEditMode:" destination="7Vb-If-7Kh" id="0V2-z8-AeW"/>
+                                <action selector="enterEditMode:" destination="7Vb-If-7Kh" id="8MX-J3-jSl"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="5tH-Dy-8gZ">
@@ -74,7 +74,6 @@
                         </connections>
                     </refreshControl>
                     <connections>
-                        <outlet property="group" destination="V5D-l1-JV0" id="qNt-l7-3Nu"/>
                         <outlet property="ridesSearchBar" destination="XKY-iM-tiL" id="U5f-ga-F9F"/>
                         <outlet property="searchDisplayController" destination="nK6-na-JCe" id="KK5-LA-DS9"/>
                     </connections>
@@ -98,7 +97,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="887" y="-684"/>
+            <point key="canvasLocation" x="837" y="-714"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="k16-jI-BJj">
@@ -198,7 +197,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mow-C0-a4u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="501" y="-684"/>
+            <point key="canvasLocation" x="221" y="-720"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9PB-fh-LZR">

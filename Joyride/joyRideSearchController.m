@@ -18,10 +18,12 @@
 
 @synthesize ridesRefinedArray;
 @synthesize ridesSearchBar;
+
+/*
 @synthesize groupBarButtonSelectItems;
 @synthesize cancelBarButton;
 @synthesize groupBarButton;
-
+*/
 -(void)setRides:(NSArray *)ridesArray{
     _ridesArray=ridesArray;
     [self.tableView reloadData];
@@ -117,32 +119,36 @@
 
 
 #pragma mark - TableView Delegate
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    NSLog(@"select row");
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     // Perform segue to candy detail
    [self performSegueWithIdentifier:@"displayDetails" sender:tableView];
 }
 
 #pragma mark - Segue
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"displayDetails"]) {
-        NSLog(@"sender %@",sender);
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"displayDetails"])
+    {
+        
         UIViewController *detailsViewController = [segue destinationViewController];
         // In order to manipulate the destination view controller, another check on which table (search or normal) is displayed is needed
         
     
-        if(sender == self.searchDisplayController.searchResultsTableView) {
+        if(sender == self.searchDisplayController.searchResultsTableView)
+        {
             NSIndexPath *indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
             NSString *destinationTitle = [[ridesRefinedArray objectAtIndex:[indexPath row]] startingPoint];
             [detailsViewController setTitle:destinationTitle];
         }
-        else {
+        else
+        {
             NSLog(@"%lu",(unsigned long)ridesRefinedArray.count);
             if(ridesRefinedArray.count>0 ){
             NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
             NSString *destinationTitle = [[ridesRefinedArray objectAtIndex:[indexPath row]] startingPoint];
-                [detailsViewController setTitle:destinationTitle];
+            [detailsViewController setTitle:destinationTitle];
+                
             }
         }
         
@@ -219,13 +225,8 @@
     
 
 }
--(IBAction)cancelAction:(id)sender
-{
-    //cancel button action
 
-
-}
-
+/*
 
 -(IBAction)groupItemsAction:(id)sender
 {
@@ -255,7 +256,7 @@
     }
 
 }
-/*
+
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
     return <#expression#>
 }

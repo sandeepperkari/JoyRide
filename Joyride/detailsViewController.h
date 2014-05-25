@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface detailsViewController : NSObject
--(void)setTitle;
+@interface detailsViewController : UIViewController
+-(void)setTitle:(NSString *) title;
 
 @end

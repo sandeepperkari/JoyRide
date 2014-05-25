@@ -11,10 +11,9 @@
 @interface joyRideSearchController ()
 
 @end
-/*<em>addRideViewControllerDelegate</em>*/
+
 
 @implementation joyRideSearchController
-
 
 @synthesize ridesRefinedArray;
 @synthesize ridesSearchBar;
@@ -24,6 +23,7 @@
 @synthesize cancelBarButton;
 @synthesize groupBarButton;
 */
+
 -(void)setRides:(NSArray *)ridesArray{
     _ridesArray=ridesArray;
     [self.tableView reloadData];
@@ -36,11 +36,24 @@
     [self fetchRides];
     self.tableView.allowsMultipleSelectionDuringEditing = YES;
     self.ridesRefinedArray=[NSMutableArray arrayWithCapacity:[self.ridesArray count]];
+    [self createBarButtonItems];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        LocationViewController *location=[[LocationViewController alloc]init];
+        [location getCurrentLocation ];
+    
+    
+    });
     
     //self.tableView.editing=YES;
     //[self.tableView reloadData];
 }
 
+-(void)createBarButtonItems{
+    
+    
+
+}
 
 -(IBAction)fetchRides{
     
@@ -131,27 +144,38 @@
     if ([[segue identifier] isEqualToString:@"displayDetails"])
     {
         
-        UIViewController *detailsViewController = [segue destinationViewController];
+        detailsViewController *detailsViewController = [segue destinationViewController];
         // In order to manipulate the destination view controller, another check on which table (search or normal) is displayed is needed
         
     
         if(sender == self.searchDisplayController.searchResultsTableView)
         {
-            NSIndexPath *indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
+           NSIndexPath *indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
             NSString *destinationTitle = [[ridesRefinedArray objectAtIndex:[indexPath row]] startingPoint];
-            [detailsViewController setTitle:destinationTitle];
+           // [detailsViewController setTitle:destinationTitle];
+            
+            [detailsViewController setTitle:destinationTitle ];
         }
         else
         {
             NSLog(@"%lu",(unsigned long)ridesRefinedArray.count);
-            if(ridesRefinedArray.count>0 ){
-            NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-            NSString *destinationTitle = [[ridesRefinedArray objectAtIndex:[indexPath row]] startingPoint];
-            [detailsViewController setTitle:destinationTitle];
+            if(self.ridesArray.count>0 )
+            {
+                NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+                NSString *destinationTitle = [[self.ridesArray objectAtIndex:[indexPath row]] startingPoint];
+                [detailsViewController setTitle:destinationTitle ];
                 
             }
         }
         
+    }
+    
+    if ([segue.identifier isEqualToString:@"AddRide"])
+    {
+        
+        UINavigationController *navigationController = segue.destinationViewController;
+        addRideViewController *playerDetailsViewController = [navigationController viewControllers][0];
+        playerDetailsViewController.delegate = self;
     }
 }
 
@@ -190,9 +214,12 @@
     return YES;
     
 }
+ */
+
+/*
 
 #pragma mark add ride viewcontroller delegate
-/*
+
 -(void)addRideViewControllerDidCancel:(addRideViewController *)controller{
     [self dismissViewControllerAnimated:yes completion:nil];
 }
@@ -224,6 +251,20 @@
     }
     
 
+}
+
+
+
+#pragma mark - PlayerDetailsViewControllerDelegate
+
+- (void)addRideViewControllerDidCancel:(addRideViewController *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)addRideViewControllerDidAdd:(addRideViewController *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 /*

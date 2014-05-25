@@ -8,23 +8,25 @@
 
 #import <UIKit/UIKit.h>
 
-/*
+
 @class addRideViewController;
-@protocol addRideViewController <NSObject>
+@protocol addRideViewControllerDelegate <NSObject>
 
 -(void)addRideViewControllerDidCancel:(addRideViewController *)controller;
 -(void)addRideViewControllerDidAdd:(addRideViewController *)controller;
 
-@end*/
+@end
 @interface addRideViewController : UIViewController
 
-//@property(nonatomic,weak)id<addRideViewControllerDelegate>delegate;
+@property(nonatomic,weak)id<addRideViewControllerDelegate>delegate;
+
+/*
 @property IBOutlet UIBarButtonItem *cancel;
 @property IBOutlet UIBarButtonItem *done;
 
-
+*/
 -(IBAction)cancel:(id)sender;
--(IBAction)done:(id)sender;
+-(IBAction)add:(id)sender;
 
 
 @end

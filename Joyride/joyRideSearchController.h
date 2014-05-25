@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "detailsViewController.h"
 #import "TestDataCollection.h"
-@interface joyRideSearchController : UITableViewController<UISearchBarDelegate,UISearchDisplayDelegate,UITableViewDataSource,UITableViewDelegate>
+#import "LocationViewController.h"
+#import "addRideViewController.h"
+@interface joyRideSearchController : UITableViewController<UISearchBarDelegate,UISearchDisplayDelegate,UITableViewDataSource,UITableViewDelegate,addRideViewControllerDelegate>
 
 @property(nonatomic,strong) NSMutableArray *ridesRefinedArray;
 @property IBOutlet UISearchBar *ridesSearchBar;

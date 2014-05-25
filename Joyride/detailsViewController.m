@@ -10,10 +10,9 @@
 
 @implementation detailsViewController
 
+-(void)setTitle:(NSString *) title{
 
--(void)setTitle{
-
-
+    NSLog(@" title in details view controller%@",title);
 
 }
 

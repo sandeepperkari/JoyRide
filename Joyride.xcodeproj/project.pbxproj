@@ -13,7 +13,6 @@
 		5B66CB031925BAE1004809A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B66CB011925BAE1004809A4 /* InfoPlist.strings */; };
 		5B66CB051925BAE1004809A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B66CB041925BAE1004809A4 /* main.m */; };
 		5B66CB091925BAE1004809A4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B66CB081925BAE1004809A4 /* AppDelegate.m */; };
-		5B66CB0C1925BAE1004809A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B66CB0A1925BAE1004809A4 /* Main.storyboard */; };
 		5B66CB111925BAE1004809A4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B66CB101925BAE1004809A4 /* Images.xcassets */; };
 		5B66CB181925BAE1004809A4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B66CB171925BAE1004809A4 /* XCTest.framework */; };
 		5B66CB191925BAE1004809A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B66CAF81925BAE1004809A4 /* Foundation.framework */; };
@@ -29,6 +28,9 @@
 		5B66CB4919280113004809A4 /* TestDataCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B66CB4819280113004809A4 /* TestDataCollection.m */; };
 		5B66CB4C19284CAE004809A4 /* detailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B66CB4B19284CAE004809A4 /* detailsViewController.m */; };
 		5B66CB4F192DB6B4004809A4 /* addRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B66CB4E192DB6B4004809A4 /* addRideViewController.m */; };
+		5B66CB5219304E86004809A4 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B66CB5119304E86004809A4 /* LocationViewController.m */; };
+		5B66CB5419304EA9004809A4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B66CB5319304EA9004809A4 /* CoreLocation.framework */; };
+		5B66CB5619317C99004809A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B66CB5519317C99004809A4 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +54,6 @@
 		5B66CB061925BAE1004809A4 /* Joyride-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Joyride-Prefix.pch"; sourceTree = "<group>"; };
 		5B66CB071925BAE1004809A4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5B66CB081925BAE1004809A4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		5B66CB0B1925BAE1004809A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5B66CB101925BAE1004809A4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5B66CB161925BAE1004809A4 /* JoyrideTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JoyrideTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B66CB171925BAE1004809A4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -77,6 +78,10 @@
 		5B66CB4B19284CAE004809A4 /* detailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = detailsViewController.m; sourceTree = "<group>"; };
 		5B66CB4D192DB6B4004809A4 /* addRideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addRideViewController.h; sourceTree = "<group>"; };
 		5B66CB4E192DB6B4004809A4 /* addRideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addRideViewController.m; sourceTree = "<group>"; };
+		5B66CB5019304E85004809A4 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
+		5B66CB5119304E86004809A4 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
+		5B66CB5319304EA9004809A4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		5B66CB5519317C99004809A4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../../../../../.Trash/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B66CB5419304EA9004809A4 /* CoreLocation.framework in Frameworks */,
 				5B66CAFB1925BAE1004809A4 /* CoreGraphics.framework in Frameworks */,
 				5B66CAFD1925BAE1004809A4 /* UIKit.framework in Frameworks */,
 				5B66CAF91925BAE1004809A4 /* Foundation.framework in Frameworks */,
@@ -125,6 +131,7 @@
 		5B66CAF71925BAE1004809A4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5B66CB5319304EA9004809A4 /* CoreLocation.framework */,
 				5B66CAF81925BAE1004809A4 /* Foundation.framework */,
 				5B66CAFA1925BAE1004809A4 /* CoreGraphics.framework */,
 				5B66CAFC1925BAE1004809A4 /* UIKit.framework */,
@@ -136,9 +143,9 @@
 		5B66CAFE1925BAE1004809A4 /* Joyride */ = {
 			isa = PBXGroup;
 			children = (
+				5B66CB5519317C99004809A4 /* Main.storyboard */,
 				5B66CB071925BAE1004809A4 /* AppDelegate.h */,
 				5B66CB081925BAE1004809A4 /* AppDelegate.m */,
-				5B66CB0A1925BAE1004809A4 /* Main.storyboard */,
 				5B66CB101925BAE1004809A4 /* Images.xcassets */,
 				5B66CAFF1925BAE1004809A4 /* Supporting Files */,
 				5B66CB371927BF87004809A4 /* Model */,
@@ -150,6 +157,8 @@
 				5B66CB4B19284CAE004809A4 /* detailsViewController.m */,
 				5B66CB4D192DB6B4004809A4 /* addRideViewController.h */,
 				5B66CB4E192DB6B4004809A4 /* addRideViewController.m */,
+				5B66CB5019304E85004809A4 /* LocationViewController.h */,
+				5B66CB5119304E86004809A4 /* LocationViewController.m */,
 			);
 			path = Joyride;
 			sourceTree = "<group>";
@@ -275,9 +284,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B66CB5619317C99004809A4 /* Main.storyboard in Resources */,
 				5B66CB111925BAE1004809A4 /* Images.xcassets in Resources */,
 				5B66CB031925BAE1004809A4 /* InfoPlist.strings in Resources */,
-				5B66CB0C1925BAE1004809A4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,6 +312,7 @@
 				5B66CB4C19284CAE004809A4 /* detailsViewController.m in Sources */,
 				5B66CB431927CF14004809A4 /* Vehcile.m in Sources */,
 				5B66CB4919280113004809A4 /* TestDataCollection.m in Sources */,
+				5B66CB5219304E86004809A4 /* LocationViewController.m in Sources */,
 				5B66CB3D1927CED7004809A4 /* Ride.m in Sources */,
 				5B66CB091925BAE1004809A4 /* AppDelegate.m in Sources */,
 				5B66CB461927E65F004809A4 /* joyRideSearch.m in Sources */,
@@ -335,14 +345,6 @@
 				5B66CB021925BAE1004809A4 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		5B66CB0A1925BAE1004809A4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5B66CB0B1925BAE1004809A4 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		5B66CB201925BAE1004809A4 /* InfoPlist.strings */ = {

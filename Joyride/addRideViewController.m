@@ -34,13 +34,16 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
--(IBAction)cancel:(id)sender{
-   // [self.delegate addRideViewControllerDidCancel:self];
 
+-(IBAction)cancel:(id)sender
+{
+    [self.delegate addRideViewControllerDidCancel:self];    
+    
 }
--(IBAction)done:(id)sender{
-     // [self.delegate addRideViewControllerDidAdd:self];
-
+-(IBAction)add:(id)sender
+{
+    [self.delegate addRideViewControllerDidAdd:self];
+    
 }
 
 @end

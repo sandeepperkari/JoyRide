@@ -30,7 +30,8 @@
 		5B66CB4F192DB6B4004809A4 /* addRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B66CB4E192DB6B4004809A4 /* addRideViewController.m */; };
 		5B66CB5219304E86004809A4 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B66CB5119304E86004809A4 /* LocationViewController.m */; };
 		5B66CB5419304EA9004809A4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B66CB5319304EA9004809A4 /* CoreLocation.framework */; };
-		5B66CB5619317C99004809A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B66CB5519317C99004809A4 /* Main.storyboard */; };
+		5B66CB581931989D004809A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B66CB571931989D004809A4 /* Main.storyboard */; };
+		5B66CB5B19350BB5004809A4 /* addSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B66CB5A19350BB5004809A4 /* addSearchViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,7 +82,9 @@
 		5B66CB5019304E85004809A4 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
 		5B66CB5119304E86004809A4 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
 		5B66CB5319304EA9004809A4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		5B66CB5519317C99004809A4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../../../../../.Trash/Main.storyboard; sourceTree = "<group>"; };
+		5B66CB571931989D004809A4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		5B66CB5919350BB5004809A4 /* addSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addSearchViewController.h; sourceTree = "<group>"; };
+		5B66CB5A19350BB5004809A4 /* addSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addSearchViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,7 +146,7 @@
 		5B66CAFE1925BAE1004809A4 /* Joyride */ = {
 			isa = PBXGroup;
 			children = (
-				5B66CB5519317C99004809A4 /* Main.storyboard */,
+				5B66CB571931989D004809A4 /* Main.storyboard */,
 				5B66CB071925BAE1004809A4 /* AppDelegate.h */,
 				5B66CB081925BAE1004809A4 /* AppDelegate.m */,
 				5B66CB101925BAE1004809A4 /* Images.xcassets */,
@@ -159,6 +162,8 @@
 				5B66CB4E192DB6B4004809A4 /* addRideViewController.m */,
 				5B66CB5019304E85004809A4 /* LocationViewController.h */,
 				5B66CB5119304E86004809A4 /* LocationViewController.m */,
+				5B66CB5919350BB5004809A4 /* addSearchViewController.h */,
+				5B66CB5A19350BB5004809A4 /* addSearchViewController.m */,
 			);
 			path = Joyride;
 			sourceTree = "<group>";
@@ -284,9 +289,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B66CB5619317C99004809A4 /* Main.storyboard in Resources */,
 				5B66CB111925BAE1004809A4 /* Images.xcassets in Resources */,
 				5B66CB031925BAE1004809A4 /* InfoPlist.strings in Resources */,
+				5B66CB581931989D004809A4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +319,7 @@
 				5B66CB4919280113004809A4 /* TestDataCollection.m in Sources */,
 				5B66CB5219304E86004809A4 /* LocationViewController.m in Sources */,
 				5B66CB3D1927CED7004809A4 /* Ride.m in Sources */,
+				5B66CB5B19350BB5004809A4 /* addSearchViewController.m in Sources */,
 				5B66CB091925BAE1004809A4 /* AppDelegate.m in Sources */,
 				5B66CB461927E65F004809A4 /* joyRideSearch.m in Sources */,
 				5B66CB051925BAE1004809A4 /* main.m in Sources */,

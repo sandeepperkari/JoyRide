@@ -88,13 +88,13 @@
 {
 #warning Incomplete method implementation.
     
-    
+  
     // Return the number of rows in the section.
     if(tableView ==self.searchDisplayController.searchResultsTableView){
-        return [ridesRefinedArray count];
+        return [ridesRefinedArray count] + 1;
     }
     else{
-        return [self.ridesArray count];
+        return [self.ridesArray count]+1;
     }
    
    }
@@ -139,6 +139,11 @@
 }
 
 #pragma mark - Segue
+
+-(BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
+    return YES;
+
+}
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"displayDetails"])
@@ -174,9 +179,17 @@
     {
         
         UINavigationController *navigationController = segue.destinationViewController;
-        addRideViewController *playerDetailsViewController = [navigationController viewControllers][0];
-        playerDetailsViewController.delegate = self;
+        addRideViewController *addRideViewController = [navigationController viewControllers][0];
+        addRideViewController.delegate = self;
     }
+    if ([segue.identifier isEqualToString:@"addSearch"])
+    {
+        
+        UINavigationController *navigationController = segue.destinationViewController;
+        addSearchViewController *addSearchViewController = [navigationController viewControllers][0];
+        addSearchViewController.delegate = self;
+    }
+    
 }
 
 
@@ -247,15 +260,29 @@
     {
         //No Editing mode.Set to editng mode
         [self.tableView setEditing:YES animated:YES];
+        UIBarButtonItem *myBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelEditingTableViewCells)];
+        myBarButtonItem.title = @"Cancel";
+        self.navigationItem.leftBarButtonItem = myBarButtonItem;
+        //self.navigationItem.leftBarButtonItem=
        // [self.group setTitle:@"cancel" forState:UIControlStateNormal];
     }
     
 
 }
+-(IBAction)cancelButton:(id)sender
+{
+}
 
+-(void)cancelEditingTableViewCells{
+[self.tableView setEditing:NO animated:NO];
+    UIBarButtonItem *myBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"cancel" style:UIBarButtonItemStyleDone target:self action:nil];
+    myBarButtonItem.title = @"Group";
+    self.navigationItem.leftBarButtonItem = myBarButtonItem;
+}
 
+/*
 
-#pragma mark - PlayerDetailsViewControllerDelegate
+#pragma mark - AddRideViewControllerDelegate
 
 - (void)addRideViewControllerDidCancel:(addRideViewController *)controller
 {
@@ -263,6 +290,18 @@
 }
 
 - (void)addRideViewControllerDidAdd:(addRideViewController *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+*/
+#pragma mark - AddSearchViewControllerDelegate
+
+- (void)addSearchViewControllerDidCancel:(addSearchViewController *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)addSearchViewControllerDidSearch:(addSearchViewController *)controller
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }

@@ -12,8 +12,14 @@
 
 -(void)setTitle:(NSString *) title{
 
-    NSLog(@" title in details view controller%@",title);
 
-}
+    self.navigationItem.title=title;
+    //UIBarButtonItem *myBarButtonItem = [[UIBarButtonItem alloc] init];
+    //myBarButtonItem.title = @"Back"; // or whatever text you want
+    //self.navigationItem.backBarButtonItem = myBarButtonItem;
+    //UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:nil];
+ 
+   // self.navigationItem.leftBarButtonItem=back;
+   }
 
 @end

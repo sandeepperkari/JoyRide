@@ -11,12 +11,14 @@
 #import "TestDataCollection.h"
 #import "LocationViewController.h"
 #import "addRideViewController.h"
-@interface joyRideSearchController : UITableViewController<UISearchBarDelegate,UISearchDisplayDelegate,UITableViewDataSource,UITableViewDelegate,addRideViewControllerDelegate>
+#import "addSearchViewController.h"
+@interface joyRideSearchController : UITableViewController<UISearchBarDelegate,UISearchDisplayDelegate,UITableViewDataSource,UITableViewDelegate,addSearchViewControllerDelegate,addRideViewControllerDelegate>
 
 @property(nonatomic,strong) NSMutableArray *ridesRefinedArray;
 @property IBOutlet UISearchBar *ridesSearchBar;
 @property(nonatomic,strong) NSArray *ridesArray;
 -(IBAction)enterEditMode:(id)sender;
+-(IBAction)cancelButton:(id)sender;
 
 /*
 @property (nonatomic,strong)IBOutlet UIBarButtonItem *groupBarButton;

@@ -24,6 +24,7 @@
 	// Do any additional setup after loading the view.
     //self.startingPoint.text=@" ";
     self.startingPoint.delegate=self;
+    self.destinationPoint.delegate=self;
     [self setupDefaultStartDate];
     [self signUpForKeyboardNotifications];
 }
@@ -52,6 +53,8 @@
     
     self.startDateTimeLabel.text=[self.dateFormatter stringFromDate:defaultDate];
     self.startDateTimeLabel.textColor=[self.tableView tintColor];
+    self.endDateTimeLabel.text=[self.dateFormatter stringFromDate:defaultDate];
+    self.endDateTimeLabel.textColor=[self.tableView tintColor];
     self.selectedStartDateTime=defaultDate;
     
 
@@ -72,7 +75,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.row==1)
+    if(indexPath.row==1 || indexPath.row==4)
     {
         if(self.datePickerIsShowing)
         {
@@ -91,34 +94,36 @@
     
     self.datePickerIsShowing=YES;
     [self.tableView beginUpdates];
-    [self.tableView endUpdates];
+    
+    self.endDatePicker.hidden=NO;
     self.startDatePicker.hidden=NO;
     self.startDatePicker.alpha=0.0f;
-    
+    self.endDatePicker.alpha=0.0f;
     [UIView animateWithDuration:0.25 animations:^{
     
         self.startDatePicker.alpha=1.0f;
-    
+        self.endDatePicker.alpha=1.0f;
     }];
-
+    [self.tableView endUpdates];
 }
 -(void)hideDatePickerCell
 {
     self.datePickerIsShowing=NO;
     [self.tableView beginUpdates];
-    [self.tableView endUpdates];
+   
     
     [UIView animateWithDuration:0.25
     animations:^{
         self.startDatePicker.alpha=0.0f;
-        
+        self.endDatePicker.alpha=0.0f;
     }
     completion:^(BOOL finished)
     {
         self.startDatePicker.hidden=YES;
+        self.endDatePicker.hidden=YES;
                      
     }];
-    
+     [self.tableView endUpdates];
 
 }
 -(IBAction)startDatePickerChange:(UIDatePicker *)sender
@@ -128,6 +133,12 @@
     
 
 }
+-(IBAction)endDatePickerChange:(UIDatePicker *)sender
+{
+    self.endDateTimeLabel.text= [self.dateFormatter stringFromDate:sender.date];
+    self.selectedStartDateTime=sender.date;
+}
+
 - (void)signUpForKeyboardNotifications
 {
     

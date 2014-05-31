@@ -9,14 +9,42 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface LocationViewController : UIViewController<CLLocationManagerDelegate>
+@class LocationViewController;
+@protocol MYCLControllerDelegate <NSObject>
+@required
+-(void)locationUpdates:(CLLocation *)location;
+-(void)locationError:(NSError *)error;
 
 
-@property(nonatomic,strong)CLLocationManager *loactionManager;
+@end
+@interface LocationViewController : NSObject<CLLocationManagerDelegate>
+{
+    CLLocationManager *locationManager;
+    CLGeocoder *geocoder;
+    CLPlacemark *placemark;
+    
+    
+
+}
+@property (nonatomic,weak)id<MYCLControllerDelegate>delegate;
+@property(nonatomic,strong)CLLocationManager *locationManager;
+@property(nonatomic,strong)CLGeocoder *geocoder;
+
+- (void)locationManager:(CLLocationManager *)manager
+	didUpdateToLocation:(CLLocation *)newLocation
+		   fromLocation:(CLLocation *)oldLocation;
+
+- (void)locationManager:(CLLocationManager *)manager
+	   didFailWithError:(NSError *)error;
+
+
+
 @property(nonatomic,strong)CLLocation *startLocation;
 @property(nonatomic,strong) NSString *longitude;
 @property(nonatomic,strong) NSString *latitude;
 @property(nonatomic,strong) NSString *address;
+/*
 -(void)getCurrentLocation;
+ */
 
 @end

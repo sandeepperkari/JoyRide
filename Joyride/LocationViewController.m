@@ -12,44 +12,44 @@
 
 @end
 
-@implementation LocationViewController{
+@implementation LocationViewController
+@synthesize locationManager;
+@synthesize delegate;
+@synthesize geocoder;
+   
+    
 
-    CLLocationManager *locationManager;
-    CLGeocoder *geocoder;
-    CLPlacemark *placemark;
-    
-    
-}
+
 @synthesize latitude;
 @synthesize longitude;
 @synthesize address;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+
+
+
+- (id)init
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+    self=[super init];
+    if(self!=nil)
+    {
+        self.locationManager=[[CLLocationManager alloc]init];
+        self.locationManager.delegate=self;
+        self.locationManager.desiredAccuracy=kCLLocationAccuracyBest;
+        self.geocoder=[[CLGeocoder alloc]init];
     }
     return self;
 }
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    locationManager=[[CLLocationManager alloc]init];
-    geocoder=[[CLGeocoder alloc]init];
-}
-
+/*
 -(void)getCurrentLocation
 {
     if([CLLocationManager locationServicesEnabled])
     {
         locationManager.delegate=self;
         locationManager.desiredAccuracy=kCLLocationAccuracyBest;
-        [locationManager startUpdatingLocation];
+       // [locationManager startUpdatingLocation];
     }
 }
-
+*/
 #pragma mark- CLLocationManagerDelegate
 
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
@@ -95,10 +95,6 @@
 }
 
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 @end

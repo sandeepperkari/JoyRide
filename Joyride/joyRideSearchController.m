@@ -9,6 +9,13 @@
 #import "joyRideSearchController.h"
 
 @interface joyRideSearchController ()
+{
+    LocationViewController *locationViewController;
+    /*CLLocationManager *locationManager;
+    CLGeocoder *geocoder;
+    CLPlacemark *placemark;
+*/
+}
 
 @end
 
@@ -18,6 +25,12 @@
 @synthesize ridesRefinedArray;
 @synthesize ridesSearchBar;
 
+
+/*
+@synthesize latitude;
+@synthesize longitude;
+@synthesize address;
+ */
 /*
 @synthesize groupBarButtonSelectItems;
 @synthesize cancelBarButton;
@@ -33,17 +46,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    locationViewController=[[LocationViewController alloc] init];
+    locationViewController.delegate=self;
+    [locationViewController.locationManager startUpdatingLocation];
+    
+   // locationManager=[[CLLocationManager alloc]init];
+    //geocoder=[[CLGeocoder alloc]init];
+    //[self getCurrentLocation];
+    // Hide the search bar until user scrolls up
+    CGRect newBounds = [[self tableView] bounds];
+    newBounds.origin.y = newBounds.origin.y + ridesSearchBar.bounds.size.height;
+    [[self tableView] setBounds:newBounds];
+    
     [self fetchRides];
     self.tableView.allowsMultipleSelectionDuringEditing = YES;
     self.ridesRefinedArray=[NSMutableArray arrayWithCapacity:[self.ridesArray count]];
     [self createBarButtonItems];
     
-    dispatch_async(dispatch_get_main_queue(), ^{
+    /*dispatch_async(dispatch_get_main_queue(), ^{
         LocationViewController *location=[[LocationViewController alloc]init];
         [location getCurrentLocation ];
     
     
-    });
+    });*/
     
     //self.tableView.editing=YES;
     //[self.tableView reloadData];
@@ -117,15 +143,13 @@
      
     }
     else{
-        rideObj=[self.ridesArray objectAtIndex:[indexPath row]];
+       // rideObj=[self.ridesArray objectAtIndex:[indexPath row]];
     }
     
-   // NSDictionary *ride=self.ridesArray[indexPath.row];
-    //cell.textLabel.text=[ride valueForKeyPath:@"startingPoint"];
-    //cell.detailTextLabel.text=[ride valueForKeyPath:@"destinationPoint"];
-    
-    cell.textLabel.text=rideObj.startingPoint;
-    cell.detailTextLabel.text=rideObj.destinationPoint;
+    cell.textLabel.text=@"1";
+    cell.detailTextLabel.text=@"2";
+   // cell.textLabel.text=rideObj.startingPoint;
+    //cell.detailTextLabel.text=rideObj.destinationPoint;
     return cell;
 }
 
@@ -246,13 +270,15 @@
 
 #pragma mark Grouping cell
 
-
+//Group button clicked for grouping cells
 -(IBAction)enterEditMode:(id)sender{
     
    if([self.tableView isEditing])
    {
         //Editing mode. Set to no editing mode
         [self.tableView setEditing:NO animated:NO];
+      // NSArray *selectedRows = [self.tableView indexPathsForSelectedRows];
+ //NSIndexPath *tableSelection = [self.tableView indexPathForSelectedRow];
         //[self.editButtonItem]
         
     }
@@ -260,9 +286,9 @@
     {
         //No Editing mode.Set to editng mode
         [self.tableView setEditing:YES animated:YES];
-        UIBarButtonItem *myBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelEditingTableViewCells)];
-        myBarButtonItem.title = @"Cancel";
-        self.navigationItem.leftBarButtonItem = myBarButtonItem;
+        //UIBarButtonItem *myBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelEditingTableViewCells)];
+        //myBarButtonItem.title = @"Cancel";
+        //self.navigationItem.leftBarButtonItem = myBarButtonItem;
         //self.navigationItem.leftBarButtonItem=
        // [self.group setTitle:@"cancel" forState:UIControlStateNormal];
     }
@@ -280,7 +306,7 @@
     self.navigationItem.leftBarButtonItem = myBarButtonItem;
 }
 
-/*
+
 
 #pragma mark - AddRideViewControllerDelegate
 
@@ -293,7 +319,7 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-*/
+
 #pragma mark - AddSearchViewControllerDelegate
 
 - (void)addSearchViewControllerDidCancel:(addSearchViewController *)controller
@@ -305,6 +331,71 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (void)locationUpdate:(CLLocation *)location {
+	NSLog(@"location description   %@",[location description]);
+}
+
+- (void)locationError:(NSError *)error {
+	NSLog(@"error description   %@",[error description]);
+}
+/*
+
+-(void)getCurrentLocation
+{
+    if([CLLocationManager locationServicesEnabled])
+    {
+        locationManager.delegate=self;
+        locationManager.desiredAccuracy=kCLLocationAccuracyBest;
+       // [locationManager startUpdatingLocation];
+    }
+}
+
+#pragma mark- CLLocationManagerDelegate
+
+-(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    NSLog(@"did fail with error %@",error);
+    
+    UIAlertView *errorAlert=[[UIAlertView alloc]initWithTitle:@"Error" message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    
+    [errorAlert show];
+    
+}
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    NSLog(@"didUpdateToLocation: %@", newLocation);
+    CLLocation *currentLocation = newLocation;
+    
+    if (currentLocation != nil) {
+        self.longitude = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.longitude];
+        self.latitude = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude];
+        
+        NSLog(@" address%@",self.latitude);
+        NSLog(@"Longitude %@",self.longitude);
+    }
+    [locationManager stopUpdatingLocation];
+    
+    NSLog(@"Resolving the Address");
+    [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        NSLog(@"Found placemarks: %@, error: %@", placemarks, error);
+        if (error == nil && [placemarks count] > 0) {
+            placemark = [placemarks lastObject];
+            self.address = [NSString stringWithFormat:@"%@ %@\n%@ %@\n%@\n%@",
+                            placemark.subThoroughfare, placemark.thoroughfare,
+                            placemark.postalCode, placemark.locality,
+                            placemark.administrativeArea,
+                            placemark.country];
+            
+            
+            NSLog(@" address%@",self.address);
+        } else {
+            NSLog(@"%@", error.debugDescription);
+        }
+    } ];
+}
+
+*/
 
 /*
 

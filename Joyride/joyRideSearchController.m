@@ -90,10 +90,10 @@
   
     // Return the number of rows in the section.
     if(tableView ==self.searchDisplayController.searchResultsTableView){
-        return [ridesRefinedArray count] + 1;
+        return [ridesRefinedArray count] ;
     }
     else{
-        return [self.ridesArray count]+1;
+        return [self.ridesArray count];
     }
    
    }
@@ -116,11 +116,10 @@
      
     }
     else{
-       // rideObj=[self.ridesArray objectAtIndex:[indexPath row]];
+        rideObj=[self.ridesArray objectAtIndex:[indexPath row]];
     }
     
-    //cell.textLabel.text=@"1";
-    //cell.detailTextLabel.text=@"2";
+    
      cell.textLabel.text=rideObj.startingPoint;
      cell.detailTextLabel.text=rideObj.destinationPoint;
     return cell;

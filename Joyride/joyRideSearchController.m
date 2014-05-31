@@ -11,10 +11,7 @@
 @interface joyRideSearchController ()
 {
     LocationViewController *locationViewController;
-    /*CLLocationManager *locationManager;
-    CLGeocoder *geocoder;
-    CLPlacemark *placemark;
-*/
+
 }
 
 @end
@@ -25,17 +22,6 @@
 @synthesize ridesRefinedArray;
 @synthesize ridesSearchBar;
 
-
-/*
-@synthesize latitude;
-@synthesize longitude;
-@synthesize address;
- */
-/*
-@synthesize groupBarButtonSelectItems;
-@synthesize cancelBarButton;
-@synthesize groupBarButton;
-*/
 
 -(void)setRides:(NSArray *)ridesArray{
     _ridesArray=ridesArray;
@@ -50,10 +36,6 @@
     locationViewController=[[LocationViewController alloc] init];
     locationViewController.delegate=self;
     [locationViewController.locationManager startUpdatingLocation];
-    
-   // locationManager=[[CLLocationManager alloc]init];
-    //geocoder=[[CLGeocoder alloc]init];
-    //[self getCurrentLocation];
     // Hide the search bar until user scrolls up
     CGRect newBounds = [[self tableView] bounds];
     newBounds.origin.y = newBounds.origin.y + ridesSearchBar.bounds.size.height;
@@ -64,15 +46,6 @@
     self.ridesRefinedArray=[NSMutableArray arrayWithCapacity:[self.ridesArray count]];
     [self createBarButtonItems];
     
-    /*dispatch_async(dispatch_get_main_queue(), ^{
-        LocationViewController *location=[[LocationViewController alloc]init];
-        [location getCurrentLocation ];
-    
-    
-    });*/
-    
-    //self.tableView.editing=YES;
-    //[self.tableView reloadData];
 }
 
 -(void)createBarButtonItems{
@@ -104,7 +77,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    #warning Potentially incomplete method implementation.
+   
     // Return the number of sections.
     return 1;
 }
@@ -112,7 +85,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
+
     
   
     // Return the number of rows in the section.
@@ -146,10 +119,10 @@
        // rideObj=[self.ridesArray objectAtIndex:[indexPath row]];
     }
     
-    cell.textLabel.text=@"1";
-    cell.detailTextLabel.text=@"2";
-   // cell.textLabel.text=rideObj.startingPoint;
-    //cell.detailTextLabel.text=rideObj.destinationPoint;
+    //cell.textLabel.text=@"1";
+    //cell.detailTextLabel.text=@"2";
+     cell.textLabel.text=rideObj.startingPoint;
+     cell.detailTextLabel.text=rideObj.destinationPoint;
     return cell;
 }
 
@@ -175,14 +148,10 @@
         
         detailsViewController *detailsViewController = [segue destinationViewController];
         // In order to manipulate the destination view controller, another check on which table (search or normal) is displayed is needed
-        
-    
         if(sender == self.searchDisplayController.searchResultsTableView)
         {
-           NSIndexPath *indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
+            NSIndexPath *indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
             NSString *destinationTitle = [[ridesRefinedArray objectAtIndex:[indexPath row]] startingPoint];
-           // [detailsViewController setTitle:destinationTitle];
-            
             [detailsViewController setTitle:destinationTitle ];
         }
         else
@@ -277,8 +246,8 @@
    {
         //Editing mode. Set to no editing mode
         [self.tableView setEditing:NO animated:NO];
-      // NSArray *selectedRows = [self.tableView indexPathsForSelectedRows];
- //NSIndexPath *tableSelection = [self.tableView indexPathForSelectedRow];
+       // NSArray *selectedRows = [self.tableView indexPathsForSelectedRows];
+       //NSIndexPath *tableSelection = [self.tableView indexPathForSelectedRow];
         //[self.editButtonItem]
         
     }
@@ -332,13 +301,24 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)locationUpdate:(CLLocation *)location {
-	NSLog(@"location description   %@",[location description]);
+
+#pragma mark - Location Updates
+
+-(void)locationUpdates:(NSString *)address
+{
+    NSLog(@"Address %@",address);
+}
+-(void)locationError:(NSString *)error
+{
+    NSLog(@"Error %@",error);
 }
 
-- (void)locationError:(NSError *)error {
-	NSLog(@"error description   %@",[error description]);
-}
+@end
+
+
+
+
+
 /*
 
 -(void)getCurrentLocation
@@ -450,7 +430,6 @@
 */
 
 
-@end
 
 
 

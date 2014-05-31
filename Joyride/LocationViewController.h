@@ -12,8 +12,8 @@
 @class LocationViewController;
 @protocol MYCLControllerDelegate <NSObject>
 @required
--(void)locationUpdates:(CLLocation *)location;
--(void)locationError:(NSError *)error;
+-(void)locationUpdates:(NSString *)address;
+-(void)locationError:(NSString *)error;
 
 
 @end
@@ -43,8 +43,6 @@
 @property(nonatomic,strong) NSString *longitude;
 @property(nonatomic,strong) NSString *latitude;
 @property(nonatomic,strong) NSString *address;
-/*
--(void)getCurrentLocation;
- */
+
 
 @end

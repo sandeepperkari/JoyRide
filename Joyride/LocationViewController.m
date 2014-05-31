@@ -34,22 +34,13 @@
     {
         self.locationManager=[[CLLocationManager alloc]init];
         self.locationManager.delegate=self;
+        self.locationManager.distanceFilter = kCLDistanceFilterNone;
         self.locationManager.desiredAccuracy=kCLLocationAccuracyBest;
         self.geocoder=[[CLGeocoder alloc]init];
     }
     return self;
 }
-/*
--(void)getCurrentLocation
-{
-    if([CLLocationManager locationServicesEnabled])
-    {
-        locationManager.delegate=self;
-        locationManager.desiredAccuracy=kCLLocationAccuracyBest;
-       // [locationManager startUpdatingLocation];
-    }
-}
-*/
+
 #pragma mark- CLLocationManagerDelegate
 
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
@@ -70,7 +61,7 @@
         self.longitude = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.longitude];
         self.latitude = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude];
         
-        NSLog(@" address%@",self.latitude);
+        NSLog(@" latitude%@",self.latitude);
         NSLog(@"Longitude %@",self.longitude);
     }
     [locationManager stopUpdatingLocation];
@@ -88,8 +79,14 @@
             
             
             NSLog(@" address%@",self.address);
-        } else {
-            NSLog(@"%@", error.debugDescription);
+            
+            
+            [self.delegate locationUpdates:self.address];
+        }
+        else
+        {
+             [self.delegate locationError:error.debugDescription];
+          //  NSLog(@"%@", error.debugDescription);
         }
     } ];
 }

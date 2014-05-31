@@ -19,25 +19,10 @@
 @property IBOutlet UISearchBar *ridesSearchBar;
 @property(nonatomic,strong) NSArray *ridesArray;
 
-/*
- 
- ,CLLocationManagerDelegate
-@property(nonatomic,strong)CLLocationManager *loactionManager;
-@property(nonatomic,strong)CLLocation *startLocation;
-@property(nonatomic,strong) NSString *longitude;
-@property(nonatomic,strong) NSString *latitude;
-@property(nonatomic,strong) NSString *address;
--(void)getCurrentLocation;
-
-*/
 -(IBAction)enterEditMode:(id)sender;
 -(IBAction)cancelButton:(id)sender;
-- (void)locationUpdate:(CLLocation *)location;
-- (void)locationError:(NSError *)error;
-/*
-@property (nonatomic,strong)IBOutlet UIBarButtonItem *groupBarButton;
-@property(nonatomic,strong) UIBarButtonItem *groupBarButtonSelectItems;
-@property(nonatomic,strong) UIBarButtonItem *cancelBarButton;
-*/
+-(void)locationUpdates:(NSString *)address;
+-(void)locationError:(NSString *)error;
+
 
 @end

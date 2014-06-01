@@ -20,6 +20,7 @@
 
 @property (nonatomic,weak)id<addSearchViewControllerDelegate>delegate;
 @property (assign) BOOL datePickerIsShowing;
+@property(assign) BOOL endDatePickerIsShowing;
 @property (nonatomic,strong) IBOutlet UITextField *startingPoint;
 @property (strong, nonatomic) IBOutlet UITextField *destinationPoint;
 @property(nonatomic,strong) IBOutlet UILabel *StartDateTime;

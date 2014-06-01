@@ -8,6 +8,7 @@
 
 #import "addSearchViewController.h"
 #define kDatePickerIndex 2
+#define kEndDatePickerIndex 5
 #define kDatePickerCellHeight 164
 
 @interface addSearchViewController ()
@@ -22,7 +23,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    //self.startingPoint.text=@" ";
+    
     self.startingPoint.delegate=self;
     self.destinationPoint.delegate=self;
     [self setupDefaultStartDate];
@@ -65,17 +66,22 @@
     
     CGFloat height=self.tableView.rowHeight;
     
-    if(indexPath.row==kDatePickerIndex)
+    if(indexPath.row==kDatePickerIndex )
     {
         height=self.datePickerIsShowing ?  kDatePickerCellHeight:0.0f;
         
     }
+    else if (indexPath.row==kEndDatePickerIndex)
+    {
+    height=self.endDatePickerIsShowing ?  kDatePickerCellHeight:0.0f;
+    }
+    
     return height;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.row==1 || indexPath.row==4)
+    if(indexPath.row==1)
     {
         if(self.datePickerIsShowing)
         {
@@ -85,7 +91,24 @@
         {
             [self.activeTextField resignFirstResponder];
             [self showDatePickerCell];
+            //self.endDatePicker.hidden=YES;
+            
         }
+    }
+    else if (indexPath.row==4)
+    {
+       if(self.endDatePickerIsShowing )
+       {
+           [self hideEndDatePickerCell];
+       }
+       else
+        {
+            [self.activeTextField resignFirstResponder];
+            [self showEndDatePickerCell];
+            self.endDatePicker.hidden=NO;
+            
+        }
+    
     }
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
@@ -94,17 +117,45 @@
     
     self.datePickerIsShowing=YES;
     [self.tableView beginUpdates];
-    
-    self.endDatePicker.hidden=NO;
     self.startDatePicker.hidden=NO;
     self.startDatePicker.alpha=0.0f;
-    self.endDatePicker.alpha=0.0f;
     [UIView animateWithDuration:0.25 animations:^{
-    
         self.startDatePicker.alpha=1.0f;
-        self.endDatePicker.alpha=1.0f;
     }];
     [self.tableView endUpdates];
+}
+
+-(void)showEndDatePickerCell
+{
+    self.endDatePickerIsShowing =YES;
+    [self.tableView beginUpdates];
+    self.endDatePicker.hidden=NO;
+    self.endDatePicker.alpha=0.0f;
+    [UIView animateWithDuration:0.25 animations:^{
+        self.endDatePicker.alpha=1.0f;
+    }];
+    
+    [self.tableView endUpdates];
+    
+}
+-(void)hideEndDatePickerCell
+{
+    self.endDatePickerIsShowing =NO;
+    [self.tableView beginUpdates];
+    
+    [UIView animateWithDuration:0.25
+                     animations:^{
+                         
+                         self.endDatePicker.alpha=0.0f;
+                     }
+                     completion:^(BOOL finished)
+                    {
+                        
+                        self.endDatePicker.hidden=YES;
+         
+                    }];
+    [self.tableView endUpdates];
+
 }
 -(void)hideDatePickerCell
 {
@@ -115,14 +166,13 @@
     [UIView animateWithDuration:0.25
     animations:^{
         self.startDatePicker.alpha=0.0f;
-        self.endDatePicker.alpha=0.0f;
+        
     }
     completion:^(BOOL finished)
     {
         self.startDatePicker.hidden=YES;
-        self.endDatePicker.hidden=YES;
-                     
     }];
+    
      [self.tableView endUpdates];
 
 }

@@ -130,8 +130,12 @@
 #pragma mark - TableView Delegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Perform segue to candy detail
-   [self performSegueWithIdentifier:@"displayDetails" sender:tableView];
+   
+    if(![self.tableView isEditing])
+    {
+         // Perform segue to candy detail
+        [self performSegueWithIdentifier:@"displayDetails" sender:tableView];
+    }
 }
 
 #pragma mark - Segue

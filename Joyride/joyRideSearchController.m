@@ -21,6 +21,7 @@
 
 @synthesize ridesRefinedArray;
 @synthesize ridesSearchBar;
+@synthesize selectedRidesForGroupArray;
 
 
 -(void)setRides:(NSArray *)ridesArray{
@@ -36,15 +37,20 @@
     locationViewController=[[LocationViewController alloc] init];
     locationViewController.delegate=self;
     [locationViewController.locationManager startUpdatingLocation];
+    
     // Hide the search bar until user scrolls up
     CGRect newBounds = [[self tableView] bounds];
     newBounds.origin.y = newBounds.origin.y + ridesSearchBar.bounds.size.height;
     [[self tableView] setBounds:newBounds];
     
     [self fetchRides];
+    
+    //Tableview for multiple selection
     self.tableView.allowsMultipleSelectionDuringEditing = YES;
-    self.ridesRefinedArray=[NSMutableArray arrayWithCapacity:[self.ridesArray count]];
+    
+   // self.ridesRefinedArray=[NSMutableArray arrayWithCapacity:[self.ridesArray count]];
     [self createBarButtonItems];
+    selectedRidesForGroupArray=[[NSMutableArray alloc]init];
     
 }
 
@@ -85,18 +91,17 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
-    
-  
     // Return the number of rows in the section.
-    if(tableView ==self.searchDisplayController.searchResultsTableView){
+    if(tableView ==self.searchDisplayController.searchResultsTableView)
+    {
         return [ridesRefinedArray count] ;
     }
-    else{
+    else
+    {
         return [self.ridesArray count];
     }
    
-   }
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -109,9 +114,9 @@
     
     Ride *rideObj=Nil;
     
-    if(tableView==self.searchDisplayController.searchResultsTableView){
+    if(tableView==self.searchDisplayController.searchResultsTableView)
+    {
         
-        NSLog(@"index row%ld",(long)indexPath.row);
         rideObj=[ridesRefinedArray objectAtIndex:indexPath.row];
      
     }
@@ -136,11 +141,24 @@
          // Perform segue to candy detail
         [self performSegueWithIdentifier:@"displayDetails" sender:tableView];
     }
+    else if ([self.tableView isEditing])
+    {
+        
+        NSArray *selectedRows =[self.tableView indexPathsForSelectedRows] ;
+        NSLog(@"selected rows %@",selectedRows);
+        
+        Ride *ridObj=Nil;
+        ridObj=[self.ridesArray objectAtIndex:indexPath.row];
+        [selectedRidesForGroupArray addObject:ridObj];
+    
+    }
 }
+
 
 #pragma mark - Segue
 
--(BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
+-(BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
     return YES;
 
 }
@@ -159,7 +177,6 @@
         }
         else
         {
-            NSLog(@"%lu",(unsigned long)ridesRefinedArray.count);
             if(self.ridesArray.count>0 )
             {
                 NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
@@ -171,19 +188,27 @@
         
     }
     
-    if ([segue.identifier isEqualToString:@"AddRide"])
+    else if ([segue.identifier isEqualToString:@"AddRide"])
     {
         
         UINavigationController *navigationController = segue.destinationViewController;
         addRideViewController *addRideViewController = [navigationController viewControllers][0];
         addRideViewController.delegate = self;
     }
-    if ([segue.identifier isEqualToString:@"addSearch"])
+    else if ([segue.identifier isEqualToString:@"addSearch"])
     {
         
         UINavigationController *navigationController = segue.destinationViewController;
         addSearchViewController *addSearchViewController = [navigationController viewControllers][0];
         addSearchViewController.delegate = self;
+    }
+    else if ([segue.identifier isEqualToString:@"CreateGroup"])
+    {
+       /* UINavigationController *navigationController=segue.destinationViewController;
+        CreateGroupViewController *createGroupViewController=[navigationController viewControllers][0];
+        createGroupViewController.delegate=self;
+        */
+        
     }
     
 }
@@ -249,20 +274,13 @@
    {
         //Editing mode. Set to no editing mode
         [self.tableView setEditing:NO animated:NO];
-       // NSArray *selectedRows = [self.tableView indexPathsForSelectedRows];
-       //NSIndexPath *tableSelection = [self.tableView indexPathForSelectedRow];
-        //[self.editButtonItem]
-        
+       
     }
     else
     {
         //No Editing mode.Set to editng mode
         [self.tableView setEditing:YES animated:YES];
-        //UIBarButtonItem *myBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelEditingTableViewCells)];
-        //myBarButtonItem.title = @"Cancel";
-        //self.navigationItem.leftBarButtonItem = myBarButtonItem;
-        //self.navigationItem.leftBarButtonItem=
-       // [self.group setTitle:@"cancel" forState:UIControlStateNormal];
+        
     }
     
 
@@ -304,7 +322,15 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+-(void)createdGroupViewControllerDidCancel:(CreateGroupViewController *)controller
+{
+    
+}
 
+-(void)createdGroupViewControllerDidCreate:(CreateGroupViewController *)controller
+{
+
+}
 #pragma mark - Location Updates
 
 -(void)locationUpdates:(NSString *)address
@@ -319,6 +345,23 @@
 @end
 
 
+/*
+ UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+ if (cell.accessoryType == UITableViewCellAccessoryCheckmark)	{
+ 
+ // cell.accessoryType = UITableViewCellAccessoryNone;
+ NSLog(@"cell chexkec");
+ }
+ 
+ 
+ if([self.tableView cellForRowAtIndexPath:indexPath].accessoryType==UITableViewCellAccessoryCheckmark)
+ {
+ NSArray* selectedRows = [tableView indexPathsForSelectedRows];
+ 
+ NSLog(@"selected rows %@",selectedRows);
+ 
+ 
+ }*/
 
 
 

@@ -145,7 +145,6 @@
     
     [UIView animateWithDuration:0.25
                      animations:^{
-                         
                          self.endDatePicker.alpha=0.0f;
                      }
                      completion:^(BOOL finished)

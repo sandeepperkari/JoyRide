@@ -32,6 +32,9 @@
 		5B66CB5419304EA9004809A4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B66CB5319304EA9004809A4 /* CoreLocation.framework */; };
 		5B66CB581931989D004809A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B66CB571931989D004809A4 /* Main.storyboard */; };
 		5B66CB5B19350BB5004809A4 /* addSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B66CB5A19350BB5004809A4 /* addSearchViewController.m */; };
+		5B9983D2193ACA1800030276 /* GroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9983D1193ACA1800030276 /* GroupsViewController.m */; };
+		5B9983D5193B890600030276 /* GroupListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9983D4193B890600030276 /* GroupListViewController.m */; };
+		5B9983D8193B8D5900030276 /* CreateGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9983D7193B8D5900030276 /* CreateGroupViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +88,12 @@
 		5B66CB571931989D004809A4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		5B66CB5919350BB5004809A4 /* addSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addSearchViewController.h; sourceTree = "<group>"; };
 		5B66CB5A19350BB5004809A4 /* addSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addSearchViewController.m; sourceTree = "<group>"; };
+		5B9983D0193ACA1800030276 /* GroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupsViewController.h; sourceTree = "<group>"; };
+		5B9983D1193ACA1800030276 /* GroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupsViewController.m; sourceTree = "<group>"; };
+		5B9983D3193B890600030276 /* GroupListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupListViewController.h; sourceTree = "<group>"; };
+		5B9983D4193B890600030276 /* GroupListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupListViewController.m; sourceTree = "<group>"; };
+		5B9983D6193B8D5900030276 /* CreateGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateGroupViewController.h; sourceTree = "<group>"; };
+		5B9983D7193B8D5900030276 /* CreateGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateGroupViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +173,12 @@
 				5B66CB5119304E86004809A4 /* LocationViewController.m */,
 				5B66CB5919350BB5004809A4 /* addSearchViewController.h */,
 				5B66CB5A19350BB5004809A4 /* addSearchViewController.m */,
+				5B9983D0193ACA1800030276 /* GroupsViewController.h */,
+				5B9983D1193ACA1800030276 /* GroupsViewController.m */,
+				5B9983D3193B890600030276 /* GroupListViewController.h */,
+				5B9983D4193B890600030276 /* GroupListViewController.m */,
+				5B9983D6193B8D5900030276 /* CreateGroupViewController.h */,
+				5B9983D7193B8D5900030276 /* CreateGroupViewController.m */,
 			);
 			path = Joyride;
 			sourceTree = "<group>";
@@ -310,15 +325,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B9983D2193ACA1800030276 /* GroupsViewController.m in Sources */,
 				5B66CB3A1927CEBC004809A4 /* User.m in Sources */,
 				5B66CB3519271044004809A4 /* joyRideSearchController.m in Sources */,
 				5B66CB4F192DB6B4004809A4 /* addRideViewController.m in Sources */,
 				5B66CB401927CEF8004809A4 /* RideEnrollment.m in Sources */,
 				5B66CB4C19284CAE004809A4 /* detailsViewController.m in Sources */,
+				5B9983D8193B8D5900030276 /* CreateGroupViewController.m in Sources */,
 				5B66CB431927CF14004809A4 /* Vehcile.m in Sources */,
 				5B66CB4919280113004809A4 /* TestDataCollection.m in Sources */,
 				5B66CB5219304E86004809A4 /* LocationViewController.m in Sources */,
 				5B66CB3D1927CED7004809A4 /* Ride.m in Sources */,
+				5B9983D5193B890600030276 /* GroupListViewController.m in Sources */,
 				5B66CB5B19350BB5004809A4 /* addSearchViewController.m in Sources */,
 				5B66CB091925BAE1004809A4 /* AppDelegate.m in Sources */,
 				5B66CB461927E65F004809A4 /* joyRideSearch.m in Sources */,
@@ -523,6 +541,7 @@
 				5B66CB291925BAE1004809A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5B66CB2A1925BAE1004809A4 /* Build configuration list for PBXNativeTarget "JoyrideTests" */ = {
 			isa = XCConfigurationList;
@@ -531,6 +550,7 @@
 				5B66CB2C1925BAE1004809A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -22,6 +22,7 @@
 @synthesize ridesRefinedArray;
 @synthesize ridesSearchBar;
 @synthesize selectedRidesForGroupArray;
+@synthesize isRowsSelected;
 
 
 -(void)setRides:(NSArray *)ridesArray{
@@ -33,7 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    isRowsSelected=TRUE;
     locationViewController=[[LocationViewController alloc] init];
     locationViewController.delegate=self;
     [locationViewController.locationManager startUpdatingLocation];
@@ -43,12 +44,19 @@
     newBounds.origin.y = newBounds.origin.y + ridesSearchBar.bounds.size.height;
     [[self tableView] setBounds:newBounds];
     
+    self.navigationItem.rightBarButtonItem = self.searchBarButtonItem;
+    self.navigationItem.leftBarButtonItem = self.groupBarButtonItem;
+    
+    self.navigationItem.leftBarButtonItem.title=@"group";
+    
+    
+    
     [self fetchRides];
     
     //Tableview for multiple selection
     self.tableView.allowsMultipleSelectionDuringEditing = YES;
     
-   // self.ridesRefinedArray=[NSMutableArray arrayWithCapacity:[self.ridesArray count]];
+    // self.ridesRefinedArray=[NSMutableArray arrayWithCapacity:[self.ridesArray count]];
     [self createBarButtonItems];
     selectedRidesForGroupArray=[[NSMutableArray alloc]init];
     
@@ -107,27 +115,46 @@
 {
     static NSString *CellIdentifier = @"searchResultCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-   
     if ( cell == nil ) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+    if(indexPath.row == 0)
+    {
+        CGRect buttonRect = CGRectMake(210, 25, 65, 25);
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        button.frame = buttonRect;
+        // set the button title here if it will always be the same
+        [button setTitle:@"Action" forState:UIControlStateNormal];
+        button.tag = 1;
+        //[button addTarget:self action:@selector(myAction:) forControlEvents:UIControlEventTouchUpInside];
+        
+         cell.accessoryType = UITableViewCellAccessoryNone;
+        [cell addSubview:button ];
+        //[cell.contentView addSubview:button atIndex:0];
+        //[cell.contentView addSubView:button atIndex:0];
+        return cell;
+    }
+    else{
+    
+    
+   
     
     Ride *rideObj=Nil;
     
     if(tableView==self.searchDisplayController.searchResultsTableView)
     {
-        
         rideObj=[ridesRefinedArray objectAtIndex:indexPath.row];
-     
     }
-    else{
+    else
+    {
         rideObj=[self.ridesArray objectAtIndex:[indexPath row]];
     }
     
     
      cell.textLabel.text=rideObj.startingPoint;
      cell.detailTextLabel.text=rideObj.destinationPoint;
-    return cell;
+     return cell;
+    }
 }
 
 
@@ -137,31 +164,76 @@
 {
    
     if(![self.tableView isEditing])
+        
     {
-         // Perform segue to candy detail
-        [self performSegueWithIdentifier:@"displayDetails" sender:tableView];
+        
+        if(indexPath.row!=0)
+        {
+            // Perform segue to candy detail
+            [self performSegueWithIdentifier:@"displayDetails" sender:tableView];
+        }
+        else
+        {
+            [self shouldPerformSegueWithIdentifier:@"displayDetails" sender:self.tableView];
+        }
+        
     }
     else if ([self.tableView isEditing])
     {
         
-        NSArray *selectedRows =[self.tableView indexPathsForSelectedRows] ;
-        NSLog(@"selected rows %@",selectedRows);
+        NSIndexPath *indexPath =[self.tableView indexPathForSelectedRow];
         
-        Ride *ridObj=Nil;
-        ridObj=[self.ridesArray objectAtIndex:indexPath.row];
-        [selectedRidesForGroupArray addObject:ridObj];
+            
+            if(indexPath!= Nil)
+            {
+       
+                Ride *ridObj=Nil;
+                ridObj=[self.ridesArray objectAtIndex:indexPath.row];
+                [selectedRidesForGroupArray addObject:ridObj];
+            }
+            else
+            {
+                self.isRowsSelected=FALSE;
+        
+            }
+        
     
     }
 }
 
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    //Remove the object of deselected row from the array
+    if([self.tableView isEditing])
+    {
+       
+    
+    }
+    
+
+}
 
 #pragma mark - Segue
 
 -(BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
-    return YES;
+   /* if([identifier isEqual:@"CreateGroup"]){
+        return NO;
+    }*/
+    //return YES;
+    
+    if ([identifier isEqualToString:@"displayDetails"]) {
+    
+    return NO;
+    
+    }
+    else return YES;
+    
 
 }
+
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"displayDetails"])
@@ -204,10 +276,10 @@
     }
     else if ([segue.identifier isEqualToString:@"CreateGroup"])
     {
-       /* UINavigationController *navigationController=segue.destinationViewController;
+        UINavigationController *navigationController=segue.destinationViewController;
         CreateGroupViewController *createGroupViewController=[navigationController viewControllers][0];
         createGroupViewController.delegate=self;
-        */
+        
         
     }
     
@@ -239,6 +311,8 @@
     // Return YES to cause the search result table view to be reloaded.
     return YES;
 }
+
+
 /*
 
 -(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption{
@@ -268,32 +342,39 @@
 #pragma mark Grouping cell
 
 //Group button clicked for grouping cells
--(IBAction)enterEditMode:(id)sender{
-    
-   if([self.tableView isEditing])
-   {
-        //Editing mode. Set to no editing mode
-        [self.tableView setEditing:NO animated:NO];
-       
-    }
-    else
-    {
-        //No Editing mode.Set to editng mode
-        [self.tableView setEditing:YES animated:YES];
-        
-    }
-    
-
-}
--(IBAction)cancelButton:(id)sender
+-(IBAction)enterEditMode:(id)sender
 {
+   
+    [self.tableView setEditing:YES animated:YES];
+    self.navigationItem.rightBarButtonItem = self.doneBarButtonItem;
+    self.navigationItem.leftBarButtonItem = self.cancelBarButtonItem;
+    self.navigationItem.leftBarButtonItem.title=@"cancel";
+    self.navigationItem.rightBarButtonItem.title=@"Done";
+    
 }
+-(IBAction)searchBarButtonClicked:(id)sender
+{
+    
 
--(void)cancelEditingTableViewCells{
-[self.tableView setEditing:NO animated:NO];
-    UIBarButtonItem *myBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"cancel" style:UIBarButtonItemStyleDone target:self action:nil];
-    myBarButtonItem.title = @"Group";
-    self.navigationItem.leftBarButtonItem = myBarButtonItem;
+}
+-(IBAction)cancelBarButtonClicked:(id)sender
+{
+    [self.tableView setEditing:NO animated:YES];
+    self.navigationItem.rightBarButtonItem = self.searchBarButtonItem;
+    self.navigationItem.leftBarButtonItem = self.groupBarButtonItem;
+    self.navigationItem.leftBarButtonItem.title=@"group";
+}
+-(IBAction)doneBarButtonClicked:(id)sender
+{
+    [self.tableView setEditing:NO animated:YES];
+    
+    /*if(self.isRowsSelected)
+    {
+        
+        [self shouldPerformSegueWithIdentifier:@"CreateGroup" sender:self.tableView];
+        
+    }*/
+   
 }
 
 
@@ -303,11 +384,17 @@
 - (void)addRideViewControllerDidCancel:(addRideViewController *)controller
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+    self.navigationItem.leftBarButtonItem=self.groupBarButtonItem;
+    self.navigationItem.rightBarButtonItem=self.searchBarButtonItem;
+    self.navigationItem.leftBarButtonItem.title=@"group";
 }
 
 - (void)addRideViewControllerDidAdd:(addRideViewController *)controller
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+    self.navigationItem.leftBarButtonItem=self.groupBarButtonItem;
+    self.navigationItem.rightBarButtonItem=self.searchBarButtonItem;
+    self.navigationItem.leftBarButtonItem.title=@"group";
 }
 
 #pragma mark - AddSearchViewControllerDelegate
@@ -324,11 +411,22 @@
 
 -(void)createdGroupViewControllerDidCancel:(CreateGroupViewController *)controller
 {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.tableView setEditing:NO animated:YES];
+    self.navigationItem.leftBarButtonItem=self.groupBarButtonItem;
+    self.navigationItem.rightBarButtonItem=self.searchBarButtonItem;
+    self.navigationItem.leftBarButtonItem.title=@"group";
     
 }
 
 -(void)createdGroupViewControllerDidCreate:(CreateGroupViewController *)controller
 {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.tableView setEditing:NO animated:YES];
+    self.navigationItem.leftBarButtonItem=self.groupBarButtonItem;
+    self.navigationItem.rightBarButtonItem=self.searchBarButtonItem;
+    self.navigationItem.leftBarButtonItem.title=@"group";
 
 }
 #pragma mark - Location Updates

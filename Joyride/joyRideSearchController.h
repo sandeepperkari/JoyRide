@@ -20,7 +20,20 @@
 @property IBOutlet UISearchBar *ridesSearchBar;
 @property(nonatomic,strong) NSArray *ridesArray;
 @property(nonatomic,strong)NSMutableArray *selectedRidesForGroupArray;
+@property(nonatomic,strong) IBOutlet UIBarButtonItem *doneBarButtonItem;
+@property(nonatomic,strong) IBOutlet UIBarButtonItem *searchBarButtonItem;
+@property(nonatomic,strong) IBOutlet UIBarButtonItem *cancelBarButtonItem;
+@property(nonatomic,strong) IBOutlet UIBarButtonItem *groupBarButtonItem;
+@property(nonatomic,assign)BOOL *isRowsSelected;
+
+
+//-(IBAction)groupBarButtonClicked:(id)sender;
+-(IBAction)searchBarButtonClicked:(id)sender;
+-(IBAction)cancelBarButtonClicked:(id)sender;
+-(IBAction)doneBarButtonClicked:(id)sender;
 -(IBAction)enterEditMode:(id)sender;
+
+
 -(IBAction)cancelButton:(id)sender;
 -(void)locationUpdates:(NSString *)address;
 -(void)locationError:(NSString *)error;

@@ -113,13 +113,27 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"searchResultCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if ( cell == nil ) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
     if(indexPath.row == 0)
     {
+         static NSString *staticCellIdentifier=@"staticCell";
+         UITableViewCell *staticCell=[tableView dequeueReusableCellWithIdentifier:staticCellIdentifier];
+         if ( staticCell == nil ) {
+            staticCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:staticCellIdentifier];
+        }
+        
+        staticCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return staticCell;
+    }
+    else
+    {
+    
+        static NSString *CellIdentifier = @"searchResultCell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if ( cell == nil )
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        }
+      /*
         CGRect buttonRect = CGRectMake(210, 25, 65, 25);
         UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         button.frame = buttonRect;
@@ -130,38 +144,38 @@
         
          cell.accessoryType = UITableViewCellAccessoryNone;
         [cell addSubview:button ];
-        //[cell.contentView addSubview:button atIndex:0];
-        //[cell.contentView addSubView:button atIndex:0];
+        */
+        Ride *rideObj=Nil;
+        if(tableView==self.searchDisplayController.searchResultsTableView)
+        {
+            rideObj=[ridesRefinedArray objectAtIndex:indexPath.row];
+        }
+        else
+        {
+            rideObj=[self.ridesArray objectAtIndex:[indexPath row]];
+        }
+        cell.textLabel.text=rideObj.startingPoint;
+        cell.detailTextLabel.text=rideObj.destinationPoint;
         return cell;
-    }
-    else{
     
-    
-   
-    
-    Ride *rideObj=Nil;
-    
-    if(tableView==self.searchDisplayController.searchResultsTableView)
+}
+
+}
+
+#pragma mark - TableView Delegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row==0)
     {
-        rideObj=[ridesRefinedArray objectAtIndex:indexPath.row];
+        return 35;
     }
     else
     {
-        rideObj=[self.ridesArray objectAtIndex:[indexPath row]];
-    }
-    
-    
-     cell.textLabel.text=rideObj.startingPoint;
-     cell.detailTextLabel.text=rideObj.destinationPoint;
-     return cell;
+        return 50;
     }
 }
-
-
-
-#pragma mark - TableView Delegate
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
    
     if(![self.tableView isEditing])
         
@@ -174,7 +188,7 @@
         }
         else
         {
-            [self shouldPerformSegueWithIdentifier:@"displayDetails" sender:self.tableView];
+            //[self shouldPerformSegueWithIdentifier:@"displayDetails" sender:self.tableView];
         }
         
     }
@@ -223,11 +237,13 @@
     }*/
     //return YES;
     
-    if ([identifier isEqualToString:@"displayDetails"]) {
+    if ([identifier isEqualToString:@"displayDetails"])
+    {
     
-    return NO;
+        return NO;
     
     }
+    
     else return YES;
     
 
@@ -260,11 +276,10 @@
         
     }
     
-    else if ([segue.identifier isEqualToString:@"AddRide"])
+    else if ([segue.identifier isEqualToString:@"addRide"])
     {
         
-        UINavigationController *navigationController = segue.destinationViewController;
-        addRideViewController *addRideViewController = [navigationController viewControllers][0];
+        addRideViewController *addRideViewController =segue.destinationViewController;
         addRideViewController.delegate = self;
     }
     else if ([segue.identifier isEqualToString:@"addSearch"])
@@ -282,6 +297,7 @@
         
         
     }
+    
     
 }
 
@@ -339,12 +355,26 @@
 
 */
 
+#pragma mark disable edit mode for first row
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if(indexPath.row==0){
+    
+            return NO;
+    }
+    else
+    return YES;
+
+}
 #pragma mark Grouping cell
 
 //Group button clicked for grouping cells
 -(IBAction)enterEditMode:(id)sender
 {
-   
+   // UITableViewCell *staticCell=[self.tableView dequeueReusableCellWithIdentifier:@"staticCell"];
+   //NSIndexPath *indexPathForStaticCell= [self.tableView indexPathForCell:staticCell];
+    
     [self.tableView setEditing:YES animated:YES];
     self.navigationItem.rightBarButtonItem = self.doneBarButtonItem;
     self.navigationItem.leftBarButtonItem = self.cancelBarButtonItem;
@@ -384,17 +414,13 @@
 - (void)addRideViewControllerDidCancel:(addRideViewController *)controller
 {
     [self dismissViewControllerAnimated:YES completion:nil];
-    self.navigationItem.leftBarButtonItem=self.groupBarButtonItem;
-    self.navigationItem.rightBarButtonItem=self.searchBarButtonItem;
-    self.navigationItem.leftBarButtonItem.title=@"group";
+    
 }
 
 - (void)addRideViewControllerDidAdd:(addRideViewController *)controller
 {
     [self dismissViewControllerAnimated:YES completion:nil];
-    self.navigationItem.leftBarButtonItem=self.groupBarButtonItem;
-    self.navigationItem.rightBarButtonItem=self.searchBarButtonItem;
-    self.navigationItem.leftBarButtonItem.title=@"group";
+    
 }
 
 #pragma mark - AddSearchViewControllerDelegate

@@ -34,7 +34,7 @@
 -(IBAction)enterEditMode:(id)sender;
 
 
--(IBAction)cancelButton:(id)sender;
+
 -(void)locationUpdates:(NSString *)address;
 -(void)locationError:(NSString *)error;
 

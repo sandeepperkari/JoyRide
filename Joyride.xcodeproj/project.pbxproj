@@ -32,6 +32,8 @@
 		5B66CB5419304EA9004809A4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B66CB5319304EA9004809A4 /* CoreLocation.framework */; };
 		5B66CB581931989D004809A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B66CB571931989D004809A4 /* Main.storyboard */; };
 		5B66CB5B19350BB5004809A4 /* addSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B66CB5A19350BB5004809A4 /* addSearchViewController.m */; };
+		5B74764A194CDACB00A7D52B /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B747649194CDACB00A7D52B /* FacebookSDK.framework */; };
+		5B74764D194CDF1000A7D52B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B74764C194CDF1000A7D52B /* LoginViewController.m */; };
 		5B9983D2193ACA1800030276 /* GroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9983D1193ACA1800030276 /* GroupsViewController.m */; };
 		5B9983D5193B890600030276 /* GroupListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9983D4193B890600030276 /* GroupListViewController.m */; };
 		5B9983D8193B8D5900030276 /* CreateGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9983D7193B8D5900030276 /* CreateGroupViewController.m */; };
@@ -88,6 +90,9 @@
 		5B66CB571931989D004809A4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		5B66CB5919350BB5004809A4 /* addSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addSearchViewController.h; sourceTree = "<group>"; };
 		5B66CB5A19350BB5004809A4 /* addSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addSearchViewController.m; sourceTree = "<group>"; };
+		5B747649194CDACB00A7D52B /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		5B74764B194CDF1000A7D52B /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		5B74764C194CDF1000A7D52B /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		5B9983D0193ACA1800030276 /* GroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupsViewController.h; sourceTree = "<group>"; };
 		5B9983D1193ACA1800030276 /* GroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupsViewController.m; sourceTree = "<group>"; };
 		5B9983D3193B890600030276 /* GroupListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupListViewController.h; sourceTree = "<group>"; };
@@ -102,6 +107,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B66CB5419304EA9004809A4 /* CoreLocation.framework in Frameworks */,
+				5B74764A194CDACB00A7D52B /* FacebookSDK.framework in Frameworks */,
 				5B66CAFB1925BAE1004809A4 /* CoreGraphics.framework in Frameworks */,
 				5B66CAFD1925BAE1004809A4 /* UIKit.framework in Frameworks */,
 				5B66CAF91925BAE1004809A4 /* Foundation.framework in Frameworks */,
@@ -143,6 +149,7 @@
 		5B66CAF71925BAE1004809A4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5B747649194CDACB00A7D52B /* FacebookSDK.framework */,
 				5B66CB5319304EA9004809A4 /* CoreLocation.framework */,
 				5B66CAF81925BAE1004809A4 /* Foundation.framework */,
 				5B66CAFA1925BAE1004809A4 /* CoreGraphics.framework */,
@@ -163,6 +170,8 @@
 				5B66CB371927BF87004809A4 /* Model */,
 				5B66CB3319271044004809A4 /* joyRideSearchController.h */,
 				5B66CB3419271044004809A4 /* joyRideSearchController.m */,
+				5B74764B194CDF1000A7D52B /* LoginViewController.h */,
+				5B74764C194CDF1000A7D52B /* LoginViewController.m */,
 				5B66CB441927E65F004809A4 /* joyRideSearch.h */,
 				5B66CB451927E65F004809A4 /* joyRideSearch.m */,
 				5B66CB4A19284CAE004809A4 /* detailsViewController.h */,
@@ -332,6 +341,7 @@
 				5B66CB401927CEF8004809A4 /* RideEnrollment.m in Sources */,
 				5B66CB4C19284CAE004809A4 /* detailsViewController.m in Sources */,
 				5B9983D8193B8D5900030276 /* CreateGroupViewController.m in Sources */,
+				5B74764D194CDF1000A7D52B /* LoginViewController.m in Sources */,
 				5B66CB431927CF14004809A4 /* Vehcile.m in Sources */,
 				5B66CB4919280113004809A4 /* TestDataCollection.m in Sources */,
 				5B66CB5219304E86004809A4 /* LocationViewController.m in Sources */,
@@ -459,9 +469,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/sandeepperkari/Documents/Projects/Joyride/Joyride,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Joyride/Joyride-Prefix.pch";
 				INFOPLIST_FILE = "Joyride/Joyride-Info.plist";
+				"OTHER_LDFLAGS[arch=*]" = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -472,9 +487,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/sandeepperkari/Documents/Projects/Joyride/Joyride,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Joyride/Joyride-Prefix.pch";
 				INFOPLIST_FILE = "Joyride/Joyride-Info.plist";
+				"OTHER_LDFLAGS[arch=*]" = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

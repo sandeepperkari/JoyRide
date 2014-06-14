@@ -20,11 +20,6 @@
 
 @property(nonatomic,weak)id<addRideViewControllerDelegate>delegate;
 
-/*
-@property IBOutlet UIBarButtonItem *cancel;
-@property IBOutlet UIBarButtonItem *done;
-
-*/
 -(IBAction)cancel:(id)sender;
 -(IBAction)add:(id)sender;
 

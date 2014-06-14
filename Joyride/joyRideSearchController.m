@@ -117,11 +117,13 @@
     {
          static NSString *staticCellIdentifier=@"staticCell";
          UITableViewCell *staticCell=[tableView dequeueReusableCellWithIdentifier:staticCellIdentifier];
-         if ( staticCell == nil ) {
+         if ( staticCell == nil )
+         {
             staticCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:staticCellIdentifier];
         }
         
         staticCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [staticCell.contentView.layer setBorderWidth:1.0f];
         return staticCell;
     }
     else
@@ -232,18 +234,11 @@
 
 -(BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
-   /* if([identifier isEqual:@"CreateGroup"]){
-        return NO;
-    }*/
-    //return YES;
-    
     if ([identifier isEqualToString:@"displayDetails"])
     {
-    
         return NO;
     
     }
-    
     else return YES;
     
 
@@ -278,7 +273,8 @@
     
     else if ([segue.identifier isEqualToString:@"addRide"])
     {
-        
+       // UINavigationController *navigationController =segue.destinationViewController;
+        //addRideViewController *addRideViewController = [navigationController viewControllers][0];
         addRideViewController *addRideViewController =segue.destinationViewController;
         addRideViewController.delegate = self;
     }
@@ -411,16 +407,13 @@
 
 #pragma mark - AddRideViewControllerDelegate
 
-- (void)addRideViewControllerDidCancel:(addRideViewController *)controller
+-(void)addRideViewControllerDidAdd:(addRideViewController *)controller
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-}
 
-- (void)addRideViewControllerDidAdd:(addRideViewController *)controller
+}
+-(void)addRideViewControllerDidCancel:(addRideViewController *)controller
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
+
 }
 
 #pragma mark - AddSearchViewControllerDelegate

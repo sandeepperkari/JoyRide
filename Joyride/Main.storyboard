@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ZHd-eM-esg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="0Y1-DB-aMn">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
@@ -35,7 +35,7 @@
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <segue destination="HCt-RG-UE4" kind="push" identifier="addRide" id="fx7-en-xOX"/>
+                                                <segue destination="Ud4-iW-H9d" kind="push" identifier="addRide" id="6ky-mK-8lK"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zlY-Tl-UG1">
@@ -366,7 +366,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YPR-Un-fie" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3103" y="-517"/>
+            <point key="canvasLocation" x="3629" y="-517"/>
         </scene>
         <!--Details View Controller-->
         <scene sceneID="k16-jI-BJj">
@@ -387,37 +387,32 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="1894" y="279"/>
         </scene>
-        <!--Add Ride View Controller - AddRide-->
-        <scene sceneID="MCC-9e-H7o">
+        <!--View Controller-->
+        <scene sceneID="nk7-kH-Wvr">
             <objects>
-                <viewController id="HCt-RG-UE4" customClass="addRideViewController" sceneMemberID="viewController">
+                <viewController id="0Y1-DB-aMn" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="LR0-Bt-Z7O"/>
-                        <viewControllerLayoutGuide type="bottom" id="mGb-Vy-FWa"/>
+                        <viewControllerLayoutGuide type="top" id="XbD-tq-qki"/>
+                        <viewControllerLayoutGuide type="bottom" id="ChH-Ba-uiH"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="9d9-fC-qob">
+                    <view key="view" contentMode="scaleToFill" id="NcE-ou-oeU" customClass="FBLoginView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VdK-8R-D7C">
+                                <rect key="frame" x="72" y="298" width="181" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="AddRide" id="ueD-EN-QGF">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" style="done" id="NOr-y3-sRy">
-                            <connections>
-                                <action selector="cancel:" destination="HCt-RG-UE4" id="0fY-x4-Z5U"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="U5d-dh-NLQ">
-                            <connections>
-                                <action selector="add:" destination="HCt-RG-UE4" id="czt-Aj-XKr"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="S7n-84-z0s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U0U-tq-GVT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3085" y="-1214"/>
+            <point key="canvasLocation" x="-1283" y="-361"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="2Zk-Zn-ofP">
@@ -436,7 +431,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RQW-gq-Vb3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-602" y="-331"/>
+            <point key="canvasLocation" x="-834" y="-361"/>
         </scene>
         <!--Groups View Controller - Groups-->
         <scene sceneID="ze4-cv-2dx">
@@ -611,7 +606,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v3f-6w-1tu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3049" y="-1910"/>
+            <point key="canvasLocation" x="3575" y="-1910"/>
         </scene>
         <!--Navigation Controller - Groups-->
         <scene sceneID="RZU-7S-3cL">
@@ -632,6 +627,36 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="21" y="54"/>
         </scene>
+        <!--Add Ride View Controller-->
+        <scene sceneID="QFj-cB-5qc">
+            <objects>
+                <viewController id="Ud4-iW-H9d" customClass="addRideViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1hB-Ou-1Y6"/>
+                        <viewControllerLayoutGuide type="bottom" id="lyL-Va-cZs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="flW-Ww-7t8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="bfq-U7-rTp">
+                        <barButtonItem key="leftBarButtonItem" title="cancel" id="zrT-Wc-FeR">
+                            <connections>
+                                <action selector="cancel:" destination="Ud4-iW-H9d" id="S4O-rc-2wN"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="iTc-dv-wvh">
+                            <connections>
+                                <action selector="add:" destination="Ud4-iW-H9d" id="zkM-Gf-Kfh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qg2-WO-BPy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2629" y="-1137"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="4h5-aU-GdA">
             <objects>
@@ -648,7 +673,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E7A-cU-82B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2523" y="-1910"/>
+            <point key="canvasLocation" x="3049" y="-1910"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UdE-d2-E9F">
@@ -666,7 +691,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Szk-8s-3Wj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2577" y="-517"/>
+            <point key="canvasLocation" x="3103" y="-517"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
